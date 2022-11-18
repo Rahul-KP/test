@@ -2,7 +2,7 @@ name: upload a file
 
 on:
   push:
-    branches:["master"]
+    branches: [ "master" ]
 
 
 jobs:
@@ -10,11 +10,13 @@ jobs:
     name: upload test
     runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v2
-      -run: mkdir -p ./Uploaded Contents
-      -run: echo helloworld ./Uploaded Contents/helloworld.txt
+      - uses: actions/checkout@v2
+
+      - run: mkdir -p ./uploaded_contents
+
+      - run: echo hello > ./uploaded_contents/world.txt
 
       - uses: actions/upload-artifact@v3
         with:
-          name: artifactttt
-          path: ./Uploaded Contents/helloworld.txt
+          name: my-artifact
+          path: ./uploaded_contents/world.txt
